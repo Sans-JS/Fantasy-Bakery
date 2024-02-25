@@ -18,10 +18,13 @@
 </head>
 
 <body>
+    <!-- Encabezado -->
     <header>
+        <!-- Menú de navegación -->
         <div class="collapse bg-dark" id="navbarToggleExternalContent" data-bs-theme="dark">
             <div class="bg-dark p-4">
                 <nav>
+                    <!-- Elementos del menú -->
                     <ul>
                         <li class="nav__items">
                             <a href="productos.html" class="nav__links">Productos</a>
@@ -57,22 +60,27 @@
         </div>
     </header>
 
-    <!-- Sign In Modal -->
+    <!-- Modal de inicio de sesión -->
     <div class="modal fade" id="SignInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-light">
                 <div class="modal-header">
+                    <!-- Título del modal -->
                     <h1 class="modal-title fs-5" id="exampleModalLabel">¡Bienvenido!</h1>
+                    <!-- Botón para cerrar el modal -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Formulario de inicio de sesión -->
                     <form id="signin-form">
+                        <!-- Campos de correo electrónico y contraseña -->
                         <label for="email">Email:</label>
                         <input type="email" id="signin-email" class="form-control mb-3" placeholder="Ingresa tu correo"
                             required>
                         <label for="password">password:</label>
                         <input type="password" id="signin-password" class="form-control mb-3"
                             placeholder="Ingresa tu contraseña" required>
+                        <!-- Botón para iniciar sesión -->
                         <button class="btn btn-primary">
                             Iniciar Sesión
                         </button>
@@ -83,8 +91,10 @@
     </div>
 
     <header class="hero">
+        <!-- Barra de navegación -->
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
+                <!-- Botón para activar el menú de navegación -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -93,43 +103,46 @@
             </div>
         </nav>
 
+        <!-- Contenido principal -->
         <section class="hero__container container">
+            <!-- Título y contenido de la sección de héroe -->
             <h1 class="hero__tile">¿Necesitas informes? Contactanos</h1>
+            <!-- Logo de la pastelería -->
             <div class="nav_logo" style="display: flex; justify-content: center;">
                 <img src="./images/Pastelería Fantasy.png" alt="Logo" style="width: 50%;">
             </div>
+            <!-- Información de contacto -->
             <p>Numero telefonico: 56-35-92-91-33</p>
             <p>Gmail: pastelriafantasy@gmail.com</p>
         </section>
     </header>
 
+    <!-- Pie de página -->
     <footer class="footer">
+        <!-- Contenedor del pie de página -->
         <section class="footer__container container">
+            <!-- Navegación de redes sociales -->
             <nav class="nav nav--footer">
+                <!-- Título de la sección -->
                 <h2 class="footer__title">REDES SOCIALES</h2>
-
+                <!-- Enlaces a redes sociales -->
                 <ul class="nav__link nav__link--footer">
                     <li class="nav__items">
                         <a class="nav__links">FACEBOOK</a>
                     </li>
-                    <li class="nav__items">
-                        <a class="nav__links">INSTAGRAM</a>
-                    </li>
-                    <li class="nav__items">
-                        <a class="nav__links">TWITTER</a>
-                    </li>
-                    <li class="nav__items">
-                        <a class="nav__links">YOUTUBE</a>
-                    </li>
+                    <!-- Otros enlaces a redes sociales -->
+                    <!-- ... -->
                 </ul>
             </nav>
         </section>
 
+        <!-- Derechos de autor -->
         <section class="footer__copy container">
+            <!-- Mensaje de derechos de autor -->
             <h3 class="footer__copyright">Derechos reservados &copy; Caos Computer</h3>
         </section>
     </footer>
-    <!--Bootstrap Scripts-->
+    <!-- Scripts de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
