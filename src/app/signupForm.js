@@ -1,12 +1,18 @@
+// Importamos la función createUserWithEmailAndPassword de Firebase para crear un usuario con correo electrónico y contraseña
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+// Importamos el objeto 'auth' desde firebase.js que contiene la instancia de autenticación de Firebase
 import { auth } from './firebase.js';
+// Importamos la función showMessage desde el archivo showMessage.js para mostrar mensajes en la interfaz de usuario
 import { showMessage } from "./showMessage.js";
 
+// Seleccionamos el formulario de registro en el DOM
 const signupForm = document.querySelector('#signup-form');
 
+// Agregamos un evento de escucha para el envío del formulario de registro
 signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Evitamos que el formulario se envíe de forma tradicional
 
+    // Obtenemos el valor del correo electrónico y la contraseña ingresados por el usuario
     const email = signupForm['signup-email'].value;
     const password = signupForm['signup-password'].value;
 
@@ -23,12 +29,18 @@ signupForm.addEventListener('submit', async (e) => {
     }
 
     try {
+        // Intentamos crear un usuario con el correo electrónico y la contraseña proporcionados
         const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        
+        // Si la creación del usuario es exitosa, ocultamos el modal de registro
         const signUpModal = document.querySelector('#SignUpModal');
         const modal = bootstrap.Modal.getInstance(signUpModal);
         modal.hide();
+        
+        // Mostramos un mensaje de bienvenida en la interfaz de usuario
         showMessage("Bienvenido " + userCredentials.user.email);
     } catch (error) {
+        // Si se produce un error durante la creación del usuario, manejamos diferentes casos de error
         if (error.code === 'auth/email-already-in-use') {
             showMessage('El correo ya está en uso', "error");
         } else {
@@ -37,15 +49,13 @@ signupForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Función para validar el correo electrónico
+// Función para validar el formato del correo electrónico utilizando una expresión regular
 function isValidEmail(email) {
-    // Utiliza una expresión regular para validar el formato del correo
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
 }
 
-// Función para validar la contraseña
+// Función para validar la longitud de la contraseña
 function isValidPassword(password) {
-    // Verifica que la contraseña tenga al menos 6 caracteres
     return password.length >= 6;
 }

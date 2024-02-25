@@ -1,21 +1,24 @@
-import { eliminar_graduacion } from "./firebase.js";
-import { editar_graduacion } from './firebase.js';
-import { ActualizarGraduacion } from "./firebase.js";
+// Importa las funciones necesarias desde el archivo 'firebase.js' y 'showMessage.js'
+import { eliminar_graduacion, editar_graduacion, ActualizarGraduacion } from "./firebase.js";
 import { showMessage } from "./showMessage.js";
 
+// Selecciona el elemento HTML con la clase 'postsGraduacion' y el formulario con id 'producto-form'
 const postListGraduacion = document.querySelector('.postsGraduacion');
 const productoForm = document.querySelector('#producto-form');
 let id = '';
 
+// Función para formatear el precio como una cadena con formato de moneda
 function formatCurrency(amount) {
     return '$' + amount.toLocaleString('en-US');
 }
 
+// Función que configura la visualización de las publicaciones de graduación
 export const setUpGraduacion = (data) => {
     if (data.length) {
-        let html = '';
+        let html = ''; // Variable para almacenar el HTML generado
         data.forEach(doc => {
-            const pasteles = doc.data();
+            const pasteles = doc.data(); // Obtiene los datos del documento actual
+            // Crea un fragmento de HTML utilizando los datos del documento actual
             const article = `
             <article class="about__icons">
                 <img src="images/boda/1.jpg" class="about__icon" alt="">
@@ -29,14 +32,16 @@ export const setUpGraduacion = (data) => {
                 </label>
             </article>
             `;
-            html += article;
+            html += article; // Agrega el fragmento de HTML al acumulador 'html'
         });
-        postListGraduacion.innerHTML = html;
+        postListGraduacion.innerHTML = html; // Establece el contenido HTML del elemento 'postListGraduacion' con el HTML generado
 
+        // Agrega un evento de clic a cada botón 'Eliminar'
         const btnDelete = postListGraduacion.querySelectorAll('.delete');
         btnDelete.forEach(btn => {
             btn.addEventListener('click', async ({ target: { dataset } }) => {
                 try {
+                    // Llama a la función 'eliminar_graduacion' con el ID del elemento seleccionado
                     await eliminar_graduacion(dataset.id);
                     showMessage("Producto eliminado correctamente, recargue para visualizar los cambios");
                 } catch (error) {
@@ -45,26 +50,34 @@ export const setUpGraduacion = (data) => {
             });
         });
 
+        // Agrega un evento de clic a cada botón 'Actualizar'
         const btnEdit = postListGraduacion.querySelectorAll('.edit');
         btnEdit.forEach(btn => {
             btn.addEventListener('click', async (e) => {
+                // Obtiene los datos de la publicación seleccionada para editar
                 const doc = await editar_graduacion(e.target.dataset.id);
                 const editar = doc.data();
+                // Obtiene los elementos del formulario
                 const title = productoForm['producto-title'];
                 const content = productoForm['producto-content'];
                 const price = productoForm['producto-price'];
 
+                // Llena los campos del formulario con los datos de la publicación seleccionada
                 title.value = editar.title;
                 content.value = editar.content;
                 price.value = formatCurrency(editar.price);
-                id = doc.id;
+                id = doc.id; // Guarda el ID del documento seleccionado
 
+                // Agrega un evento de envío al formulario para actualizar la publicación
                 productoForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     try {
+                        // Valida los campos del formulario
                         validateFields(title.value, content.value, price.value);
+                        // Actualiza la publicación utilizando la función 'ActualizarGraduacion'
                         await ActualizarGraduacion(id, { title: title.value, content: content.value, price: parseFloat(price.value.replace(/[^0-9.]+/g, '')) });
                         showMessage("Producto actualizado, recargue para visualizar los cambios");
+                        // Oculta el modal de edición después de actualizar la publicación
                         const actualizarModal = document.querySelector('#editar');
                         const modal = bootstrap.Modal.getInstance(actualizarModal);
                         modal.hide();
@@ -73,17 +86,19 @@ export const setUpGraduacion = (data) => {
                     }
                 });
 
-                // Agregar evento 'input' para formatear automáticamente el precio
+                // Agrega un evento 'input' al campo de precio para formatearlo automáticamente
                 price.addEventListener('input', (e) => {
                     e.target.value = formatCurrency(parseFloat(e.target.value.replace(/[^0-9.]+/g, '')));
                 });
             });
         });
     } else {
+        // Si no hay datos disponibles, muestra un mensaje indicando que no existen productos o el usuario no ha iniciado sesión
         postListGraduacion.innerHTML = '<h1>No existen productos o no ha iniciado sesión</h1>';
     }
 };
 
+// Función para validar los campos del formulario de edición/creación de publicaciones
 function validateFields(title, content, price) {
     const formattedPrice = parseFloat(price.replace(/[^0-9.]+/g, ''));
     if (title.trim() === '') {
