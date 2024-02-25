@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasteleria Fantasy</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/estiloUsuario.css">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--App Main-->
+    <script type="module" src="./main_productos.js"></script>
+</head>
+
+<body>
+    <!--MENU DE HAMBURGUESA-->
+    <header>
+        <div class="collapse bg-dark" id="navbarToggleExternalContent" data-bs-theme="dark">
+            <div class="bg-dark p-4">
+                <nav>
+                    <ul>
+                        <li class="nav__items">
+                            <a href="productos.html" class="nav__links">Productos</a>
+                        </li>
+                        <br>
+                        <li class="nav__items">
+                            <a href="promociones.html" class="nav__links">Promociones</a>
+                        </li>
+                        <br>
+                        <li class="nav__items">
+                            <a href="nosotros.html" class="nav__links">Nosotros</a>
+                        </li>
+                        <br>
+                        <li class="nav__items">
+                            <a href="contacto.html" class="nav__links">Contacto</a>
+                        </li>
+                        <br>
+                        <li class="nav__items">
+                            <a data-bs-toggle="modal" data-bs-target="#SignInModal" class="nav__links">Iniciar
+                                Sesion</a>
+                        </li>
+                        <br>
+                        <li class="nav__items">
+                            <a class="nav__links" href="index.html">Inicio</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOSTRAR MENU DE INICIO DE SESIÓN -->
+    <div class="modal fade" id="SignInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">¡Bienvenido!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signin-form">
+                        <label for="email">Email:</label>
+                        <input type="email" id="signin-email" class="form-control mb-3" placeholder="Ingresa tu correo"
+                            required>
+                        <label for="password">password:</label>
+                        <input type="password" id="signin-password" class="form-control mb-3"
+                            placeholder="Ingresa tu contraseña" required>
+                        <button class="btn btn-primary">
+                            Iniciar Sesión
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOSTRAR CARRITO DE COMPRAS PAPU -->
+    <div class="modal fade" id="Carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">¡Bienvenido!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signin-fom">
+                        <label for="email">Email:</label>
+                        <label for="password">password:</label>
+                        <button class="btn btn-primary">
+                            Iniciar Sesión
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="hero">
+        <!--BARRA DE NAVEGACION-->
+        <nav class="navbar navbar-dark bg-dark nav">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Carrito">
+                        Tu selección
+                        <img src="images/carrito-de-compras.png" alt="Bootstrap" width="32" height="32">
+                    </button>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categorias de pasteles
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a href="#BODA" style="text-decoration: none;"><button class="dropdown-item"
+                                        type="button">BODAS</button></a>
+                            </li>
+                            <li>
+                                <a href="#INFANTILES" style="text-decoration: none;"><button class="dropdown-item"
+                                        type="button">INFANTILES</button></a>
+                            </li>
+                            <li>
+                                <a href="#XV" style="text-decoration: none;"><button class="dropdown-item"
+                                        type="button">QUINCE AÑOS</button></a>
+                            </li>
+                            <li>
+                                <a href="#GRADUACIONES" style="text-decoration: none;"><button class="dropdown-item"
+                                        type="button">GRADUACIONES</button></a>
+                            </li>
+                        </ul>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- LOGO E INTRODUCCIÓN AL CONTENIDO -->
+        <section class="hero__container container">
+            <h1 class="hero__tile">Bienvenidos a la mejor pasteleria del mundo</h1>
+            <div class="nav_logo" style="display: flex; justify-content: center;">
+                <img src="./images/Pastelería Fantasy.png" alt="Logo" style="width: 40%;">
+            </div>
+            <p class="hero__paragraph">Los mejores pasteles para tu ocasion especial los encuentras aqui</p>
+        </section>
+    </header>
+
+    <!-- CONTENIDO DEL SITIO -->
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">CATEGORIA DE PASTELES</h2>
+            <p class="subtitle" id="BODA">BODA </p>
+
+            <div class="about__main posts_boda">
+                <!-- 
+                    El contenido se genera automaticamente de la Base de datos de Firebase
+                    Agregado a un Script, permitiendo hacer cambios de interfaz dinamicos.
+                -->
+            </div>
+        </section>
+
+        <br> <br> <br> <br> <br>
+
+        <section class="container about">
+            <h2 class="subtitle">CATEGORIA DE PASTELES</h2>
+            <p class="subtitle" id="INFANTILES">FIESTAS INFANTILES </p>
+            <div class="about__main posts_infantiles">
+                <!-- 
+                    El contenido se genera automaticamente de la Base de datos de Firebase
+                    Agregado a un Script, permitiendo hacer cambios de interfaz dinamicos.
+                -->
+            </div>
+        </section>
+
+        <br> <br> <br> <br> <br>
+
+        <section class="container about">
+            <h2 class="subtitle">CATEGORIA DE PASTELES</h2>
+            <p class="subtitle" id="XV">QUINCE AÑOS </p>
+
+            <div class="about__main postsXV">
+                <!-- 
+                    El contenido se genera automaticamente de la Base de datos de Firebase
+                    Agregado a un Script, permitiendo hacer cambios de interfaz dinamicos.
+                -->
+            </div>
+        </section>
+
+        <br> <br> <br> <br> <br>
+
+        <section class="container about">
+            <h2 class="subtitle">CATEGORIA DE PASTELES</h2>
+            <p class="subtitle" id="GRADUACIONES">GRADUACIONES </p>
+
+            <div class="about__main postsGraduacion">
+                <!-- 
+                    El contenido se genera automaticamente de la Base de datos de Firebase
+                    Agregado a un Script, permitiendo hacer cambios de interfaz dinamicos.
+                -->
+            </div>
+        </section>
+    </main>
+
+    <br> <br> <br>
+
+    <!-- FIN DE LA PAGINA -->
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav nav--footer">
+                <h2 class="footer__title">REDES SOCIALES</h2>
+
+                <ul class="nav__link nav__link--footer">
+                    <li class="nav__items">
+                        <a class="nav__links">FACEBOOK</a>
+                    </li>
+                    <li class="nav__items">
+                        <a class="nav__links">INSTAGRAM</a>
+                    </li>
+                    <li class="nav__items">
+                        <a class="nav__links">TWITTER</a>
+                    </li>
+                    <li class="nav__items">
+                        <a class="nav__links">YOUTUBE</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section class="footer__copy container">
+            <h3 class="footer__copyright">Derechos reservados &copy; Caos Computer</h3>
+        </section>
+    </footer>
+
+    <!--Bootstrap Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Toastify-JS Scripts-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>
